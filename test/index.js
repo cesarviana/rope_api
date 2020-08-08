@@ -1,16 +1,9 @@
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let should = chai.should();
+const api = require('./api');
+const { expect } = require('chai');
 
-chai.use(chaiHttp);
-
-describe('Express', () => {
-    it('/', (done) => {
-        chai.request(process.env.URL)
-            .get('/')
-            .end((_, res) => {
-                res.should.have.status(200);
-                done();
-            });
+describe('API running', () => {
+    it('/', async () => {
+        const response = await api.get('/')
+        expect(response).have.status(200)
     });
 });
