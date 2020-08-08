@@ -7,7 +7,8 @@
   "author": "Cesar Viana",
   "license": "MIT",
   "scripts": {
-    "dev": "PORT=3000 node ."
+    "dev": "PORT=3000 node .",
+    "test": "URL=http://localhost:3000 mocha test"
   },
   "dependencies": {
     "body-parse": "^0.1.0",
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "chai-http": "^4.3.0"
+    "chai-http": "^4.3.0",
+    "mocha": "^8.1.1"
   }
 }
