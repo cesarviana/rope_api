@@ -13,6 +13,8 @@ app.use(bodyParser.json())
 
 app.get('/', (_, res)=> res.send('Hello API'))
 
+app.use('/user', require('./controllers/user'))
+
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}.`);
 });

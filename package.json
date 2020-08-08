@@ -7,7 +7,7 @@
   "author": "Cesar Viana",
   "license": "MIT",
   "scripts": {
-    "dev": "PORT=3000 node .",
+    "dev": "DB_URL=postgres://rope:5432 PORT=3000 node .",
     "test": "URL=http://localhost:3000 mocha test"
   },
   "dependencies": {

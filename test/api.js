@@ -3,10 +3,16 @@ const chaiHttp = require('chai-http');
 
 chai.use(chaiHttp);
 
-const URL = process.env.URL
-
-module.exports = {
+class API {
+    constructor(url) {
+        this.url = url;
+    }
     async get(path) {
-        return chai.request(URL).get(path)
+        return chai.request(this.url).get(path)
+    }
+    async post(path, params) {
+        return chai.request(this.url).post(path, params)
     }
 }
+
+module.exports = new API(process.env.URL)
