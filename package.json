@@ -1,0 +1,22 @@
+{
+  "name": "rope_api",
+  "version": "1.0.0",
+  "description": "Stores interactions between a RoPE and a human.",
+  "main": "index.js",
+  "repository": "https://github.com/cesarviana/rope_api",
+  "author": "Cesar Viana",
+  "license": "MIT",
+  "scripts": {
+    "dev": "PORT=3000 node ."
+  },
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "sequelize": "^6.3.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0"
+  }
+}
