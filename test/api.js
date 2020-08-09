@@ -11,7 +11,7 @@ class API {
         return chai.request(this.url).get(path)
     }
     async post(path, params) {
-        return chai.request(this.url).post(path, params)
+        return chai.request(this.url).post(path).send(params)
     }
 }
 

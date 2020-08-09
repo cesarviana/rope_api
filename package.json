@@ -7,13 +7,14 @@
   "author": "Cesar Viana",
   "license": "MIT",
   "scripts": {
-    "dev": "DB_URL=postgres://rope:5432 PORT=3000 node .",
+    "dev": "DB_URL=postgres://cesar@localhost:5432/rope PORT=3000 node .",
     "test": "URL=http://localhost:3000 mocha test"
   },
   "dependencies": {
     "body-parse": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "pg": "^8.3.0",
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
