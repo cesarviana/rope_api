@@ -1,7 +1,8 @@
 const api = require('./api');
-const { expect } = require('chai');
+const {expect} = require('chai');
+const moment = require('moment');
 
-describe('Test all', () => {
+describe('test', () => {
     it('/', async () => {
         const response = await api.get('/');
         expect(response).have.status(200)
@@ -10,28 +11,28 @@ describe('Test all', () => {
     it('/user', async () => {
         const user = {
             name: 'Cesar',
-            age: 25,
+            birthDate: moment('1994-12-29'),
             gender: 'M'
         };
         const response = await api.post('/user', user);
         expect(response).have.status(200)
     });
 
-    it('/task', async() => {
-       const task = {
-           mat: [
-               [0,0,0,0,1], // 1 obstacles
-               [0,0,0,2,0], // 2 objective
-               [1,1,1,0,0],
-               [0,0,0,0,0],
-               [0,0,1,0,0],
-           ]
-       };
-       const response = await api.post('/task', task);
+    it('/task', async () => {
+        const task = {
+            mat: [
+                [0, 0, 0, 0, 1], // 1 obstacles
+                [0, 0, 0, 2, 0], // 2 objective
+                [1, 1, 1, 0, 0],
+                [0, 0, 0, 0, 0],
+                [0, 0, 1, 0, 0],
+            ]
+        };
+        const response = await api.post('/task', task);
         expect(response).have.status(200)
     });
 
-    it('/taskExecution', async() => {
+    it('/taskExecution', async () => {
         const taskExecution = {
             startTime: Date.now(),
             endTime: Date.now(),
@@ -42,7 +43,7 @@ describe('Test all', () => {
         expect(response).have.status(200)
     });
 
-    it('/interaction', async() => {
+    it('/interaction', async () => {
         const interaction = {
             type: 'FORWARD',
             instant: Date.now(),
@@ -50,5 +51,14 @@ describe('Test all', () => {
         };
         const response = await api.post('/interaction', interaction);
         expect(response).have.status(200)
+    });
+
+    it('/sync', async () => {
+        const localData = {
+            users: [],
+            tasks: [],
+            executions: [],
+            interactions: []
+        }
     })
 });
