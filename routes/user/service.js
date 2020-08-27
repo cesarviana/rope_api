@@ -1,4 +1,4 @@
-const db = require('../sequelize');
+const db = require('@app/sequelize');
 
 module.exports = {
     async save(user) {
