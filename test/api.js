@@ -15,4 +15,4 @@ class API {
     }
 }
 
-module.exports = new API(process.env.URL)
+module.exports = new API(process.env.URL);

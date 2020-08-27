@@ -1,15 +1,18 @@
-const DataTypes = require('sequelize').DataTypes
+'use strict';
+const { Model, DataTypes } = require('sequelize');
 
-module.exports = async (sequelize) => 
-{
-    const model = sequelize.define('user', {
-        name: {
-            type: DataTypes.STRING
-        },
-        age: {
-            type: DataTypes.INTEGER
-        }
-    })
-
-    await model.sync()
-}
+module.exports = (sequelize) => {
+  class User extends Model {
+    static associate(models) {
+    }
+  }
+  User.init({
+    name: DataTypes.STRING,
+    age: DataTypes.SMALLINT,
+    gender: DataTypes.CHAR
+  }, {
+    sequelize,
+    modelName: 'user',
+  });
+  return User;
+};

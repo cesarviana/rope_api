@@ -7,7 +7,7 @@
   "author": "Cesar Viana",
   "license": "MIT",
   "scripts": {
-    "dev": "DB_URL=postgres://cesar@localhost:5432/rope PORT=3000 node .",
+    "dev": "DB_URL=postgres://cesar:root@localhost:5432/rope PORT=3000 node .",
     "test": "URL=http://localhost:3000 mocha test"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^8.1.1"
+    "mocha": "^8.1.1",
+    "sequelize-cli": "^6.2.0"
   }
 }
