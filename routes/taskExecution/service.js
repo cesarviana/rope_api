@@ -1,7 +1,3 @@
 const db = require('@app/sequelize');
-
-module.exports = {
-    async save(taskExecution) {
-        return db.execution.create(taskExecution)
-    }
-};
+const { Service } = require('@app/routes/_generic/service');
+module.exports = new Service(db, db.execution);
