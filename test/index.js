@@ -29,7 +29,7 @@ describe('Test all', () => {
        };
        const response = await api.post('/task', task);
         expect(response).have.status(200)
-    })
+    });
 
     it('/taskExecution', async() => {
         const taskExecution = {
@@ -40,14 +40,15 @@ describe('Test all', () => {
         };
         const response = await api.post('/taskExecution', taskExecution);
         expect(response).have.status(200)
-    })
+    });
 
-    // it('/interaction', async() => {
-    //     const interaction = {
-    //         type: 'FORWARD',
-    //         instant: Date.now()
-    //     };
-    //     const response = await api.post('/interaction', interaction);
-    //     expect(response).have.status(200)
-    // })
+    it('/interaction', async() => {
+        const interaction = {
+            type: 'FORWARD',
+            instant: Date.now(),
+            executionId: 1
+        };
+        const response = await api.post('/interaction', interaction);
+        expect(response).have.status(200)
+    })
 });

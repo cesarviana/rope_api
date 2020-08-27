@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
     instant: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'Interaction',
+    modelName: 'interaction',
   });
   return Interaction;
 };

@@ -1,14 +1,15 @@
 const express = require('express');
-const router = express.Router();
 
 module.exports = service => {
+
+    const router = express.Router();
 
     router.post('/', async (req, res) => {
         try {
             const saved = await service.save(req.body);
             res.json(saved)
         } catch (error) {
-            res.sendStatus(400)
+            res.status(400).send(error)
         }
     });
 
