@@ -1,6 +1,11 @@
 const api = require('./api');
 const {expect} = require('chai');
 const moment = require('moment');
+const uuid = require('uuid/v4');
+
+const userId      = uuid();
+const taskId      = uuid();
+const executionId = uuid();;
 
 describe('test', () => {
     it('/', async () => {
@@ -10,6 +15,7 @@ describe('test', () => {
 
     it('/user', async () => {
         const user = {
+            id: userId,
             name: 'Cesar',
             birthDate: moment('1994-12-29'),
             gender: 'M'
@@ -20,6 +26,7 @@ describe('test', () => {
 
     it('/task', async () => {
         const task = {
+            id: taskId,
             mat: [
                 [0, 0, 0, 0, 1], // 1 obstacles
                 [0, 0, 0, 2, 0], // 2 objective
@@ -34,10 +41,11 @@ describe('test', () => {
 
     it('/taskExecution', async () => {
         const taskExecution = {
+            id: executionId,
             startTime: Date.now(),
             endTime: Date.now(),
-            taskId: 1,
-            userId: 1
+            taskId,
+            userId
         };
         const response = await api.post('/taskExecution', taskExecution);
         expect(response).have.status(200)
@@ -47,18 +55,10 @@ describe('test', () => {
         const interaction = {
             type: 'FORWARD',
             instant: Date.now(),
-            executionId: 1
+            executionId
         };
         const response = await api.post('/interaction', interaction);
         expect(response).have.status(200)
     });
 
-    it('/sync', async () => {
-        const localData = {
-            users: [],
-            tasks: [],
-            executions: [],
-            interactions: []
-        }
-    })
 });

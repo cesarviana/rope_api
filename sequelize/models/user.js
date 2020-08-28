@@ -1,4 +1,3 @@
-'use strict';
 const { Model, DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -7,12 +6,13 @@ module.exports = (sequelize) => {
     }
   }
   User.init({
+    id: { type: DataTypes.UUIDV4, primaryKey: true },
     name: DataTypes.STRING,
     birthDate: DataTypes.DATE,
     gender: DataTypes.CHAR
   }, {
     sequelize,
-    modelName: 'user',
+    modelName: 'user'
   });
   return User;
 };

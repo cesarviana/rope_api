@@ -4,9 +4,9 @@ module.exports = {
     await queryInterface.createTable('interactions', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       type: {
         allowNull: false,
@@ -18,7 +18,7 @@ module.exports = {
       },
       executionId: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references: {
           model: 'executions',
           key: 'id'

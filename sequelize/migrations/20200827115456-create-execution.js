@@ -4,18 +4,23 @@ module.exports = {
     await queryInterface.createTable('executions', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
       taskId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'tasks',
           key: 'id'
         },
         onDelete: 'CASCADE'
+      },
+      interaction: {
+        allowNull: false,
+        type: Sequelize.ENUM('projector','buttons_only'),
+        defaultValue: 'buttons_only'
       },
       startTime: {
         type: Sequelize.DATE

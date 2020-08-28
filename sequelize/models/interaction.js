@@ -6,11 +6,12 @@ module.exports = (sequelize) => {
     }
   }
   Interaction.init({
+    id: { type: DataTypes.UUIDV4, primaryKey: true },
     type: DataTypes.STRING,
     instant: DataTypes.DATE
   }, {
     sequelize,
-    modelName: 'interaction',
+    modelName: 'interaction'
   });
   return Interaction;
 };

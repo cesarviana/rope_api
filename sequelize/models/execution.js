@@ -1,4 +1,3 @@
-'use strict';
 const {DataTypes, Model} = require('sequelize');
 module.exports = (sequelize) => {
     class Execution extends Model {
@@ -7,9 +6,12 @@ module.exports = (sequelize) => {
             this.belongsTo(models.task);
         }
     }
-    Execution.init( {
+
+    Execution.init({
+        id: { type: DataTypes.UUIDV4, primaryKey: true },
         startTime: DataTypes.DATE,
-        endTime: DataTypes.DATE
+        endTime: DataTypes.DATE,
+        interaction: DataTypes.ENUM('projector','buttons_only')
     }, {
         sequelize,
         modelName: 'execution'

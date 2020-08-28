@@ -1,2 +1,1 @@
-let db = require('./models');
-module.exports = db;
+module.exports = require('@app/sequelize/models');
