@@ -8,7 +8,7 @@ const routesDir = path.join(__dirname, 'routes');
 const routeFolders = fs.readdirSync(routesDir)
     .filter(folder => folder.charAt(0) !== '_');
 
-routeFolders.forEach(folder => loadMetaRoute(folder));
+// routeFolders.forEach(folder => loadMetaRoute(folder));
 
 function loadMetaRoute(folder) {
     const modulePath = path.join(routesDir, folder, 'meta.js');

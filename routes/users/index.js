@@ -1,4 +1,5 @@
 const router = require('@app/routes/_generic/router');
 
 const service = require('./service');
-module.exports = router(service);
+const wrapper = require('./wrapper');
+module.exports = router(service, wrapper);

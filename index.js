@@ -13,7 +13,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const routes = require('./routes');
-routes(app);
+app.use(routes);
 
 const metas = require('./meta');
 app.use(metas);

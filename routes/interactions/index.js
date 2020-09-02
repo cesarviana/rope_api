@@ -1,7 +1,7 @@
 const router = require('@app/routes/_generic/router');
 const assert = require('assert');
 const service = require('./service');
-const executionService = require('@app/routes/taskExecution/service');
+const executionService = require('@app/routes/taskExecutions/service');
 const app = router(service);
 
 app.get('/byExecution/:executionId', async (req, res, next) => {

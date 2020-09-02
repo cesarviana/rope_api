@@ -1,8 +1,8 @@
 const router = require('@app/routes/_generic/router');
 
 const service = require('./service');
-const taskService = require('@app/routes/task/service');
-const userService = require('@app/routes/user/service');
+const taskService = require('@app/routes/tasks/service');
+const userService = require('@app/routes/users/service');
 const app = router(service);
 
 app.get('/byTask/:taskId', async (req, res, next) => {
