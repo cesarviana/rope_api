@@ -1,0 +1,5 @@
+{
+  "development": {
+    "useEnvVariable" : "DB_URL"
+  }
+}
