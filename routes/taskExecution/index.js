@@ -5,16 +5,18 @@ const taskService = require('@app/routes/task/service');
 const userService = require('@app/routes/user/service');
 const app = router(service);
 
-app.get('/byTask/:taskId', async (req, res) => {
+app.get('/byTask/:taskId', async (req, res, next) => {
     const task = await taskService.findById(req.params.taskId);
     const executions = await service.findAllByTask(task);
-    res.json(executions)
+    res.data = executions;
+    next();
 });
 
-app.get('/byUser/:userId', async (req, res) => {
+app.get('/byUser/:userId', async (req, res, next) => {
     const user = await userService.findById(req.params.userId);
     const executions = await service.findAllByUser(user);
-    res.json(executions)
+    res.data = executions;
+    next();
 });
 
 module.exports = app;

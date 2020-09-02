@@ -4,12 +4,13 @@ const service = require('./service');
 const executionService = require('@app/routes/taskExecution/service');
 const app = router(service);
 
-app.get('/byExecution/:executionId', async (req, res) => {
+app.get('/byExecution/:executionId', async (req, res, next) => {
     const executionId = req.params.executionId;
     const execution = await executionService.findById(executionId);
     assert(execution !== null, `The execution was not found (id:${executionId})`);
     const interactions = await service.findAllByExecution(execution);
-    res.json(interactions);
+    res.data = interactions;
+    next();
 });
 
 module.exports = app;

@@ -4,14 +4,14 @@ module.exports = service => {
 
     const router = express.Router();
 
-    router.post('/', async (req, res) => {
-        const saved = await service.save(req.body);
-        res.json(saved)
+    router.post('/', async (req, res, next) => {
+        res.data = await service.save(req.body);
+        next()
     });
 
-    router.get('/', async (req, res) => {
-        const list = await service.findAll();
-        res.json(list)
+    router.get('/', async (req, res, next) => {
+        res.data = await service.findAll();
+        next()
     });
 
     return router;

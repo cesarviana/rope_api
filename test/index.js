@@ -10,7 +10,8 @@ const executionId = uuid();
 describe('test', () => {
     it('/', async () => {
         const response = await api.get('/');
-        expect(response).have.status(200)
+        expect(response).have.status(200);
+        expect(response.body).to.have.property("links");
     });
 
     it('/user', async () => {
