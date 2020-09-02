@@ -1,6 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    const url = getUrl(req);
+    res.json({
+        data: 'Hello',
+        links: {
+            users: `${url}/users`,
+            interactions: `${url}/interactions`,
+            tasks: `${url}/tasks`,
+            taskExecutions: `${url}/taskExecutions`,
+        }
+    })
+});
+
 const listWrappersConfigs = [
     {path: '/users', createLinkFunction: createUserLinks},
     {path: '/taskExecutions/byUser/:id', createLinkFunction: createTaskExecutionLinks},

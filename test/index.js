@@ -7,7 +7,7 @@ const userId      = uuid();
 const taskId      = uuid();
 const executionId = uuid();
 
-describe('test', () => {
+describe('test post data', () => {
     it('/', async () => {
         const response = await api.get('/');
         expect(response).have.status(200);
@@ -21,7 +21,7 @@ describe('test', () => {
             birthDate: moment('1994-12-29'),
             gender: 'M'
         };
-        const response = await api.post('/user', user);
+        const response = await api.post('/users', user);
         expect(response).have.status(200)
     });
 
@@ -36,7 +36,7 @@ describe('test', () => {
                 [0, 0, 1, 0, 0],
             ]
         };
-        const response = await api.post('/task', task);
+        const response = await api.post('/tasks', task);
         expect(response).have.status(200)
     });
 
@@ -48,7 +48,7 @@ describe('test', () => {
             taskId,
             userId
         };
-        const response = await api.post('/taskExecution', taskExecution);
+        const response = await api.post('/taskExecutions', taskExecution);
         expect(response).have.status(200)
     });
 
@@ -58,7 +58,7 @@ describe('test', () => {
             instant: Date.now(),
             executionId
         };
-        const response = await api.post('/interaction', interaction);
+        const response = await api.post('/interactions', interaction);
         expect(response).have.status(200)
     });
 
