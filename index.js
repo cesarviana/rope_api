@@ -15,6 +15,9 @@ app.use(bodyParser.json());
 const routes = require('./routes');
 routes(app);
 
+const metas = require('./meta');
+app.use(metas);
+
 const {response, errors} = require('./middlewares');
 app.use(response);
 app.use(errors);

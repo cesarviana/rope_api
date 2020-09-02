@@ -2,6 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const routesDir = path.join(__dirname, 'routes');
 
+function loadModule(modulesDir, moduleFolder, app) {
+    const route = `/${moduleFolder}`;
+    const modulePath = path.join(modulesDir, moduleFolder);
+    const module = require(modulePath);
+    app.use(route, module)
+}
+
 module.exports = app => {
 
     app.get('/', (req, res, next) => {
@@ -11,10 +18,5 @@ module.exports = app => {
 
     fs.readdirSync(routesDir)
         .filter(file => file.charAt(0) !== '_')
-        .forEach(file => {
-            const route = `/${file}`;
-            const modulePath = path.join(routesDir, file);
-            const module = require(modulePath);
-            app.use(route, module)
-        });
+        .forEach(routeFolder => loadModule(routesDir, routeFolder, app))
 };

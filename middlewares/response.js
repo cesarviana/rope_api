@@ -1,18 +1,53 @@
-function wrapLinks(req, res) {
-    if (!res.links) return {};
+function getUrl(req) {
+    return `${req.protocol}://${req.get('Host')}`;
+}
 
-    const url = `${req.protocol}//${req.get('Host')}`;
+function prependUrl(url, links) {
+    Object.keys(links).forEach(key => {
+        links[key] = url + links[key];
+    });
+    return links
+}
 
-    return Object.values(res.links).map(link => {
-        link.url = `${url}/${link.url}`;
-    })
+function buildSemanticResponse(url, data, linker) {
+    if(data instanceof Array)
+        return buildSemanticResponseForArray(url, data, linker);
+
+    let links = linker(data);
+    links = prependUrl(url, links);
+    return {
+        data,
+        links
+    }
+}
+
+function buildSemanticResponseForArray(url, dataArray, linker) {
+    const data = dataArray.map(item => {
+        let links = linker(item);
+        links = prependUrl(url, links);
+        return {
+            data: item,
+            links
+        }
+    });
+    return {
+        data,
+        links: {
+            next: '',
+            previous: ''
+        }
+    }
 }
 
 module.exports = (req, res) => {
-    const body = {
-        data: res.data,
-        links: wrapLinks(req, res)
-    };
-    res.json(body);
-    // res.json(res.data);
+    if (res.data && res.links) {
+        const url = getUrl(req);
+        const data = res.data;
+        const links = res.links;
+        const semanticResponse = buildSemanticResponse(url, data, links);
+        res.json(semanticResponse);
+    }
+    if (!res.data) {
+        res.status(404).send();
+    }
 };

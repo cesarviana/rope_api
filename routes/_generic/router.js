@@ -9,6 +9,11 @@ module.exports = service => {
         next()
     });
 
+    router.get('/:id', async (req, res, next) => {
+        res.data = await service.findById(req.params.id);
+        next()
+    });
+
     router.get('/', async (req, res, next) => {
         res.data = await service.findAll();
         next()
