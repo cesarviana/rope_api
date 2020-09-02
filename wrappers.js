@@ -1,3 +1,7 @@
+/*
+ * Wrap responses adding links to make api navigable.
+ */
+
 const express = require('express');
 const router = express.Router();
 
