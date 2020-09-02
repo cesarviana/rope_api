@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "installLocalModules": "node install/link-modules.js",
+    "start": "DB_URL=postgres://cesar:root@localhost:5432/rope PORT=3000 node .",
     "dev": "DB_URL=postgres://cesar:root@localhost:5432/rope PORT=3000 node .",
     "test": "URL=http://localhost:3000 mocha test"
   },
