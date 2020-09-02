@@ -1,6 +1,6 @@
 const express = require('express');
 
-module.exports = (service, responseWrapper) => {
+module.exports = (service) => {
 
     const router = express.Router();
 
@@ -11,15 +11,11 @@ module.exports = (service, responseWrapper) => {
 
     router.get('/:id', async (req, res, next) => {
         res.data = await service.findById(req.params.id);
-        if(responseWrapper)
-            res.data = responseWrapper.wrapObject(res.data);
         next()
     });
 
     router.get('/', async (req, res, next) => {
         res.data = await service.findAll();
-        if(responseWrapper)
-            res.data = responseWrapper.wrapList(res.data);
         next()
     });
 
