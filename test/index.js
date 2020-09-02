@@ -5,7 +5,7 @@ const uuid = require('uuid/v4');
 
 const userId      = uuid();
 const taskId      = uuid();
-const executionId = uuid();;
+const executionId = uuid();
 
 describe('test', () => {
     it('/', async () => {

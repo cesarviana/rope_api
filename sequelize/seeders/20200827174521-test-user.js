@@ -13,8 +13,7 @@ module.exports = {
         ]);
     },
 
-    down: async (queryInterface, Sequelize) => {
+    down: async (queryInterface) => {
         await queryInterface.bulkDelete('users', {id: UUID});
     }
-}
-;
+};

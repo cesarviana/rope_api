@@ -13,6 +13,14 @@ class Service {
     async save(obj) {
         return this.model.create(obj);
     }
+
+    async findById(id) {
+        return this.model.findByPk(id);
+    }
+
+    async findAll() {
+        return this.model.findAll();
+    }
 }
 
 module.exports = {
