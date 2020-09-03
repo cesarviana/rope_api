@@ -6,7 +6,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const url = getUrl(req);
+    const url = getUrl();
     res.json({
         data: 'Hello',
         links: {
@@ -78,19 +78,19 @@ function createInteractionLinks(url, interaction) {
     }
 }
 
-function getUrl(req) {
-    return `${req.protocol}://${req.get('Host')}`;
+function getUrl() {
+    return process.env.URL;
 }
 
 function wrappObjectResponse(req, res, next, linksFunction) {
-    const url = getUrl(req);
+    const url = getUrl();
     const data = res.data;
     res.data = wrappItem(url, linksFunction)(data);
     next()
 }
 
 function wrappListResponse(req, res, next, linksFunction) {
-    const url = getUrl(req);
+    const url = getUrl();
     const data = res.data;
     res.data = wrappList(data, wrappItem(url, linksFunction));
     next()
