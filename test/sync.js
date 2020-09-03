@@ -1,7 +1,7 @@
 const api = require('./api');
 const {expect} = require('chai');
 const moment = require('moment');
-const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 
 const randomName = require('node-random-name');
 
