@@ -1,5 +1,9 @@
 {
   "development": {
     "useEnvVariable" : "DB_URL"
-  }
+  },
+ "production": {
+    "useEnvVariable": "DB_URL",
+    "dialect":"postgres"
+ }
 }
