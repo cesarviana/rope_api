@@ -36,6 +36,7 @@ const objectWrappersConfigs = [
     {path: '/users/:id', createLinkFunction: createUserLinks},
     {path: '/tasks/:id', createLinkFunction: createTaskLinks},
     {path: '/taskExecutions/:id', createLinkFunction: createTaskExecutionLinks},
+    {path: '/interactions/:id', createLinkFunction: createInteractionLinks},
 ];
 
 objectWrappersConfigs.forEach(wrapper => router.get(wrapper.path, (req, res, next) => {
