@@ -10,6 +10,8 @@ const corsOptions = {
     origin: '*'
 };
 
+app.use(express.static('static'))
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 

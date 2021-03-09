@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.rope.ar",
+    "sha256_cert_fingerprints":
+    ["B5:CD:57:C5:EB:7A:DC:BD:3C:37:14:F4:8F:14:51:FB:0E:48:D3:0C:47:8F:10:FA:9B:DB:A1:2D:9B:16:5A:41"]
+  }
+}]
